@@ -20,9 +20,10 @@
         let
           # TODO: Change username
           myUserName = "john";
+          myHostname = "myhost";
         in
         {
-          legacyPackages.homeConfigurations.${myUserName} =
+          legacyPackages.homeConfigurations."${myUserName}@${myHostname}" =
             self.nixos-flake.lib.mkHomeConfiguration
               pkgs
               ({ pkgs, ... }: {
