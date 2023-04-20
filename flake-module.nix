@@ -91,6 +91,21 @@ in
                       '';
                   }
               else null;
+            init-fleek =
+              if (lib.hasAttr "homeConfigurations" self || lib.hasAttrByPath [ "legacyPackages" system "homeConfigurations" ] self)
+              then
+                pkgs.writeShellApplication
+                  {
+                    name = "init-fleek";
+                    text =
+                      ''
+                        set -x
+                        nix run \
+                          .#fleek init \
+                          "$@"
+                      '';
+                  }
+              else null;
           };
         };
       });
