@@ -94,7 +94,7 @@ in
             init-fleek =
               if (lib.hasAttr "homeConfigurations" self || lib.hasAttrByPath [ "legacyPackages" system "homeConfigurations" ] self)
               then
-                pkgs.writeShellScriptBin
+                pkgs.writeShellApplication
                   {
                     name = "init-fleek";
                     text =
